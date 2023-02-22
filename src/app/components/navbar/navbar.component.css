@@ -1,3 +1,32 @@
+.mat-toolbar{
+    height: 10%;
+}
+.primary{
+    background: #ec0000;
+    color: white;
+}
+
+.secondary {
+    background: #3a3a3e;
+    user-select: none;
+}
+
+.third {
+    background: #64646e;
+    user-select: none;
+}
 .example-spacer{
     flex: 1 1 auto;
+}
+
+.secondary .mat-button.mat-warn{
+    font-size: 15px;
+    font-family: Tahoma;
+    color: #dadfe1;
+}
+
+.third .mat-button.mat-warn{
+    font-size: 12px;
+    font-family: Tahoma;
+    color: #dadfe1;
 }

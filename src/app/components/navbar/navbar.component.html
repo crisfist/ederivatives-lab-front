@@ -1,31 +1,87 @@
-<mat-toolbar color="primary">
-    <a [routerLink]="'/'"
-        mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu_books</mat-icon>
-    </a>
-    <span>Portal</span>
-    <span class="example-spacer"></span>
-    <a
-     *ngIf = "!login.isLoggedIn()" 
-    [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button width heart icon">
-        Iniciar sesión
-    </a>
-    <a
-        *ngIf = "!login.isLoggedIn()" 
-        [routerLink]="'/signup'" mat-icon-button class="example-icon favorite-icon mr20 ml70" aria-label="Example icon-button width heart icon">
-        Registrar
-    </a>
-    <a
-        *ngIf = "login.isLoggedIn()" 
-        (click) = "logout()" 
-        style = "margin-right: 50px;"
-        mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button width heart icon">
-        Cerrar sesión </a>
-    <button
-        *ngIf = "login.isLoggedIn()"
-        mat-button
-        style = "margin-right: 10px;"
-        class="example-icon favorite-icon" aria-label="Example icon-button width heart icon">
-        {{ login.getUser().username }}
-    </button>
+<mat-toolbar class="primary">
+    <mat-toolbar-row>
+        <span><a [routerLink]="''"><img src="../assets/santander-group-logo.png" height="64px"></a></span>
+        <span class="example-spacer"></span>
+        <a
+        *ngIf = "!isLoggedIn" 
+        [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button width heart icon">
+            Iniciar sesión
+        </a>
+        <a
+            *ngIf = "!isLoggedIn" 
+            [routerLink]="'/signup'" 
+            mat-icon-button class="example-icon favorite-icon mr20 ml70" 
+            aria-label="Example icon-button width heart icon">
+            Registrar
+        </a>
+        <a
+            *ngIf = "isLoggedIn" 
+            (click) = "logout()" 
+            style = "margin-right: 50px;"
+            mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button width heart icon">
+            Cerrar sesión </a>
+        <button
+            *ngIf = "isLoggedIn && user"
+            mat-button
+            style = "margin-right: 10px;"
+            class="example-icon favorite-icon" 
+            aria-label="Example icon-button width heart icon">
+            {{ user.username }}
+        </button>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="secondary">
+        <section>
+            <a mat-button color="warn" (click) = "adminHeader()">
+                Administración
+            </a>
+            <a mat-button color="warn" (click) = "searchPriceHeader()">
+                Buscador de precios
+            </a>
+            <a mat-button color="warn" (click) = "productsHeader()">
+                Productos
+            </a>
+            <a mat-button color="warn" (click) = "positionHeader()">
+                Posición
+            </a>            
+        </section>
+      </mat-toolbar-row>
+      
+      <mat-toolbar-row class="third" *ngIf = "isAdmin">
+        <section>
+            <a mat-button color="warn">
+                Idiomas
+            </a>
+        </section>
+      </mat-toolbar-row>
+      <mat-toolbar-row class="third" *ngIf = "isSearchingPrice">
+        <section>
+            <a mat-button color="warn">
+                Buscador de precios
+            </a>
+        </section>
+      </mat-toolbar-row>
+      <mat-toolbar-row class="third" *ngIf = "isProducts">
+        <section>
+            <a mat-button color="warn">
+                DobleTramo
+            </a>
+            <a mat-button color="warn">
+                Autocallable
+            </a>
+            <a mat-button color="warn">
+                Opcion Vanilla
+            </a>
+            <a mat-button color="warn">
+                Cancelable
+            </a>
+        </section>
+      </mat-toolbar-row>
+      <mat-toolbar-row class="third" *ngIf = "isPosition">
+        <section>
+            <a mat-button color="warn">
+                Posición
+            </a>
+        </section>
+      </mat-toolbar-row>
 </mat-toolbar>

@@ -11,7 +11,7 @@ import { NormalGuard } from './services/normal.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     pathMatch: 'full',
   },

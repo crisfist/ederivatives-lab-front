@@ -6,6 +6,10 @@
     color: white;
 }
 
+.mat-toolbar-row, .mat-toolbar-single-row{
+    height: 40px;
+}
+
 .secondary {
     background: #3a3a3e;
     user-select: none;
